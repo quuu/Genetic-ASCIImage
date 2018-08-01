@@ -13,6 +13,8 @@ This project takes in a jpeg image and uses a genetic algorithm to create a ASCI
 ## Dependencies
 
 - SciKit-Image
+- NumPy
+
 
 ## Reference
 
