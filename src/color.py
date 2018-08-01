@@ -7,4 +7,5 @@ class Color:
         self.red = red
         self.green = green
         self.blue = blue
-
+    def __str__(self):
+        return "Red "+ str(self.red)+ " Blue "+ str(self.blue)+ " Green "+ str(self.green)
