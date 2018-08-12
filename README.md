@@ -12,7 +12,7 @@ This project takes in a jpeg image and uses a genetic algorithm to create a ASCI
 
 ## Dependencies
 
-- CImg
+- Todo
 
 ## Reference
 
