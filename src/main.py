@@ -2,7 +2,6 @@ import os
 import numpy as np
 from skimage import io
 import seed
-import color
 import picture
 
 
@@ -14,6 +13,11 @@ def run():
 if __name__ =="__main__":
     img = io.imread("picture.jpg")
     count=0
+
+    # the percentage to scale the picture down to fit 80 pixels
+    scaleFactorW=img.shape[0]/80
+    scaleFactorH=img.shape[1]/(img.shape[1]/scaleFactorW)
+
     seedWidth = int(img.shape[0]/50)
     seedHeight= int(img.shape[1]/50)
     print(seedWidth)
@@ -23,22 +27,33 @@ if __name__ =="__main__":
     rowCounter=0
 
     values=[]
-    # for every row in img
+
+    # for the amount of rows in the image
     for i in range(img.shape[1]):
+
+        # whenever the count returns, append row amount of seeds
         if(count==0):
-            for i in range(int(img.shape[1]/seedWidth)):
-                values.append([])
-        # for every index in the row
+            for l in range(int(img.shape[1])):
+                values.append(seed.Seed())
+
+        # if all the seeds in a certain region have been read
+        # increment rowCounter so instead of looking at
+        # indices 0-4, look at 5-8
         elif(count==seedHeight):
+            print("row counter ++")
             rowCounter+=1
             count=0
 
+        # read in pixel values
         for j in range(img.shape[0]):
         # red is i=0 in img[n][m][i] multiply by 0.2126
         # green is i=1 in img[n][m][i] multiply by 0.7152
         # blue is i=2 in img[n][m][i] multiply by 0.0722
-            j=j
-
+            print("size ", len(values), " value ", rowCounter*int(j/seedWidth))
+            values[rowCounter*(int(j/seedWidth)-1)].newPixel(img[j][i][0]*0.2126 + img[j][i][1]*0.7152 + img[j][i][2]*0.0722)
+            #print("right side ", img[i][j]," i ", i, " j ", j)
+            #print("inverted ", img[j][i], " i ", i, " j ", j)
+        count+=1
     #test image
     testPic=['*',' ','+', ' ',' ',' ','*','#','#','#']
     obj= picture.Picture(testPic,5)
