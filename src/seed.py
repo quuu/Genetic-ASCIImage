@@ -14,8 +14,10 @@ class Seed:
         for i in self.pixels:
             print(i)
 
+    def arrayPrint(self):
+        print(self.pixels)
     def averageValue(self):
-        total=0
+        total=0.0
         for i in self.pixels:
             total+=i
         total = total/len(self.pixels)

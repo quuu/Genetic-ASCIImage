@@ -18,8 +18,8 @@ if __name__ =="__main__":
     scaleFactorW=img.shape[0]/80
     scaleFactorH=img.shape[1]/(img.shape[1]/scaleFactorW)
 
-    seedWidth = int(img.shape[0]/50)
-    seedHeight= int(img.shape[1]/50)
+    seedHeight = int(img.shape[0]/50)
+    seedWidth= int(img.shape[1]/50)
     print(seedWidth)
     print(seedHeight)
     print(img.shape)
@@ -28,6 +28,25 @@ if __name__ =="__main__":
 
     values=[]
 
+
+    # loop for every pixel in height
+    for i in range(img.shape[1]):
+
+        if(count==0):
+            for l in range(img.shape[1]):
+                values.append(seed.Seed())
+
+        elif(count==seedHeight):
+            print(count,seedHeight)
+            rowCounter+=1
+            count=0
+
+        # loop for every pixel in width
+        for j in range(img.shape[0]):
+            values[rowCounter*(int(i/seedWidth)-1)].newPixel(img[j][i][0]*0.2126 + img[j][i][1]*0.7152 + img[j][i][2]*0.0722)
+        count+=1
+    bright=[]
+'''
     # for the amount of rows in the image
     for i in range(img.shape[1]):
 
@@ -43,19 +62,22 @@ if __name__ =="__main__":
             print("row counter ++")
             rowCounter+=1
             count=0
-
+        print(count)
         # read in pixel values
         for j in range(img.shape[0]):
         # red is i=0 in img[n][m][i] multiply by 0.2126
         # green is i=1 in img[n][m][i] multiply by 0.7152
         # blue is i=2 in img[n][m][i] multiply by 0.0722
             print("size ", len(values), " value ", rowCounter*int(j/seedWidth))
-            values[rowCounter*(int(j/seedWidth)-1)].newPixel(img[j][i][0]*0.2126 + img[j][i][1]*0.7152 + img[j][i][2]*0.0722)
+            values[rowCounter*(int(i/seedWidth)-1)].newPixel(img[j][i][0]*0.2126 + img[j][i][1]*0.7152 + img[j][i][2]*0.0722)
             #print("right side ", img[i][j]," i ", i, " j ", j)
             #print("inverted ", img[j][i], " i ", i, " j ", j)
         count+=1
+
+
     #test image
     testPic=['*',' ','+', ' ',' ',' ','*','#','#','#']
     obj= picture.Picture(testPic,5)
 
     obj.printPicture()
+    '''
