@@ -1,0 +1,47 @@
+for loop that goes through for the height value
+
+if(count==0)
+
+populate the values list with empty lists for Seeds
+
+increment count for every row successsfully read in
+
+if count==# of rows
+
+increment rowCounter
+reset count
+
+for loop that goes through for the width value
+
+
+
+
+
+image:
+400 x 500
+
+
+Scale down until width = 80
+
+seedWidth=400/80
+
+seedHeight=500/(500/seedWidth)
+
++---+
+|* *|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+|   |
+|* *|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+|   |
+|* *|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
