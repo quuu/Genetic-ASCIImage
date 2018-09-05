@@ -6,19 +6,19 @@ from PIL import Image
 
 #TODO Multi-thread
 
-def avg_brightness(image_list): 
+def avg_brightness(image_list):
     """
     A list of grey scale images
     """
     brightness_per_block=[]
-    for image in image_list: 
+    for image in image_list:
         img_shape = image.shape
-        img_Size = image.size
+        img_size = image.size
         total=0
         for i in range(0,img_shape[0]):
             for j in range(0,img_shape[1]):
-              total+=image[i][j]  
-        total/=img_Size
+              total+=image[i][j]
+        total/=img_size
         brightness_per_block.append(total)
     return brightness_per_block
 
@@ -43,7 +43,12 @@ def my_crop(input, height, width, k, page):
             k +=1
     return image_list
 
-image_list = my_crop("picture.jpg",80,80,(220*220)/(80*80),"page_name")
+def cropped_dimensions(images_list):
+    return (images_list[0].shape[0],images_list[0].shape[1])
+'''
+image_list = my_crop("picture.jpg",10,10,(220*220)/(80*80),"page_name")
 images = make_image_list(image_list)
 bright_per_block = avg_brightness(images)
 print(bright_per_block)
+print(cropped_dimensions(images))
+'''

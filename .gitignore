@@ -1,3 +1,5 @@
 a.out
 .DS_Store
-__pycache__
+.idea*
+*__pycache__*
+IMG-*

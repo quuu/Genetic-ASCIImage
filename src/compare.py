@@ -18,7 +18,7 @@ def return_brightness(ascii_chr):
         print("Error: in return_brightness: {}".format(e))
     return idx * (100/(len(ascii_arry)-1))
 
-def compare(Target, Population): 
+def compare(Target, Population):
     """
     This function takes in two picture objects and compares them.
 
