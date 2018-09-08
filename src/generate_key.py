@@ -1,5 +1,5 @@
 from PIL import Image
-
+import picture
 '''
 possible chars for brightness
 '''
@@ -46,21 +46,26 @@ def generate(path):
     inserting \n's to the ASCII for new lines of pixels
     '''
 
-    new_image = [pixels[index:index+new_width] for index in range(0,len(pixels),new_width)]
+    size = len(pixels)
+    new_image = [pixels[index:index+new_width] for index in range(0,size,new_width)]
+    height= len(new_image)
     image = '\n'.join(new_image)
+
 
     '''
     making sure the image is good
     '''
-    print(image)
+    #print(image)
 
     '''
     uncomment this for actual implementation
     '''
-    #return image
 
+    image = picture.Picture(image,new_width,height)
+    return image
 
+'''
 if __name__ == '__main__':
-    import sys
     path = sys.argv[1]
     generate(path)
+'''
