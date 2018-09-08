@@ -16,7 +16,7 @@ TODO:
     not completely random
 '''
 
-def generate_picture(width,height):
+def generate_picture(Target,width,height):
 
     rep = []
     for i in range(height):
@@ -28,7 +28,7 @@ def generate_picture(width,height):
         if(i<height-1):
             rep.append('\n')
     rep = ''.join(rep)
-    return picture.Picture(rep,width,height)
+    return picture.Picture(rep,width,height,Target)
 
 
 
@@ -36,9 +36,9 @@ def generate_picture(width,height):
 method to be called
 calls generate_picture the for the amount of population wanted
 '''
-def generate_pop(pop_size,width,height):
+def generate_pop(pop_size,Target,width,height):
     population=[]
     for i in range(pop_size):
-        population.append(generate_picture(width,height))
+        population.append(generate_picture(Target,width,height))
     return population
 

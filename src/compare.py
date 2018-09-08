@@ -25,7 +25,7 @@ member represetation to compare with
 def compute_fitness(Target,member):
     target_rep = Target.get_rep()
     correct=0
-    if(len(target_rep)!=len(member_rep)):
+    if(len(target_rep)!=len(member)):
         print("Error: Images must be of the same size")
     else:
         for x in range(0,len(target_rep)):
@@ -53,7 +53,6 @@ def compare(Target, Population):
     for member in Population:
         correct = 0
         member_rep = member.get_rep()
-        print(str(target_len),"   ",str(len(member_rep)))
         if target_len != len(member_rep):
             print("Error: Images must be of the same size")
         else:
@@ -61,9 +60,9 @@ def compare(Target, Population):
                 if target_rep[x] == member_rep[x]:
                     correct += 1
         correctness_list.append(correct)
-    best_idx = correctness_list.index(max(correctness_list))
-    best_pop.append(Population[best_idx])
-    del correctness_list[best_idx]
-    second_best_idx = correctness_list.index(max(correctness_list))
-    best_pop.append(Population[second_best_idx])
+
+    for i in range(10):
+        best_idx = correctness_list.index(max(correctness_list))
+        best_pop.append(Population[best_idx])
+        del correctness_list[best_idx]
     return best_pop

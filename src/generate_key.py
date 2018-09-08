@@ -1,11 +1,7 @@
 from PIL import Image
 import picture
-'''
-possible chars for brightness
-'''
+import bright
 
-ASCII_CHARS = ['.',',',':',';','+','*','?','S','$','#','@']
-ASCII_CHARS = ASCII_CHARS[::-1]
 
 
 def generate(path):
@@ -39,7 +35,7 @@ def generate(path):
     '''
 
     initial_pixels = list(image.getdata())
-    new_pixels = [ASCII_CHARS[pixel_value//25] for pixel_value in initial_pixels]
+    new_pixels = [bright.ASCII_CHARS[pixel_value//25] for pixel_value in initial_pixels]
     pixels = ''.join(new_pixels)
 
     '''
