@@ -3,12 +3,10 @@ import sys
 import os
 import numpy as np
 from skimage import io
-import picture
 import compare
+import mutate
 import generate_key as key
 import generate_population as pop
-def run():
-    print("Running")
 
 
 if __name__ =="__main__":
@@ -20,15 +18,10 @@ if __name__ =="__main__":
     height = image.get_height()
     population = pop.generate_pop(10,width,height)
 
-    for i in population:
-        i.print_picture()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
 
-    image.print_picture()
+'''
+    for i in range(100):
+        best_pop = compare.compare(image,population)
+        a = mutate.offspring(0.01,best_pop[0],best_pop[1])
 
-    pop.testing()
+        '''

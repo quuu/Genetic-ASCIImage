@@ -18,6 +18,21 @@ def return_brightness(ascii_chr):
         print("Error: in return_brightness: {}".format(e))
     return idx * (100/(len(ascii_arry)-1))
 
+'''
+Takes in Target image to compare to
+member represetation to compare with
+'''
+def compute_fitness(Target,member):
+    target_rep = Target.get_rep()
+    correct=0
+    if(len(target_rep)!=len(member_rep)):
+        print("Error: Images must be of the same size")
+    else:
+        for x in range(0,len(target_rep)):
+            if(target_rep[x] == member[x]):
+                correct+=1
+    return correct
+
 def compare(Target, Population):
     """
     This function takes in two picture objects and compares them.
@@ -38,6 +53,7 @@ def compare(Target, Population):
     for member in Population:
         correct = 0
         member_rep = member.get_rep()
+        print(str(target_len),"   ",str(len(member_rep)))
         if target_len != len(member_rep):
             print("Error: Images must be of the same size")
         else:
