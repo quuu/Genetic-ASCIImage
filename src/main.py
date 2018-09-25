@@ -1,48 +1,44 @@
 #!/usr/bin/env python3
-
-import os
-import numpy as np
-from skimage import io
-import seed
-import color
-import picture
+import sys
+from breader import *
+import argparse
 
 
 
-def run():
-    print("Running")
 
 
-if __name__ =="__main__":
-    img = io.imread("picture.jpg")
-    count=0
-    seedWidth = int(img.shape[0]/50)
-    seedHeight= int(img.shape[1]/50)
-    print(seedWidth)
-    print(seedHeight)
-    print(img.shape)
 
-    rowCounter=0
+if __name__ == "__main__":
+    '''
+    main loop to compare current generations and evolve
 
-    values=[]
-    # for every row in img
-    for i in range(img.shape[1]):
-        if(count==0):
-            for i in range(int(img.shape[1]/seedWidth)):
-                values.append([])
-        # for every index in the row
-        elif(count==seedHeight):
-            rowCounter+=1
-            count=0
+    best_pop = the 2 best images of population
 
-        for j in range(img.shape[0]):
-        # red is i=0 in img[n][m][i] multiply by 0.2126
-        # green is i=1 in img[n][m][i] multiply by 0.7152
-        # blue is i=2 in img[n][m][i] multiply by 0.0722
-            j=j
+    population = best_pop merged together with n mutation rate
 
-    #test image
-    testPic=['*',' ','+', ' ',' ',' ','*','#','#','#']
-    obj= picture.Picture(testPic,5)
+    population = regenerated with mutations and the base DNA
+    '''
+ 
+    path = sys.argv[1]
+    image = generate(path)
+    
+    image.print_picture()
+    width = image.get_width()
+    height = image.get_height()
+    population = generate_pop(1000,image,width,height)
 
-    obj.printPicture()
+    mutation_rate = 0.50
+    best_pop = None
+    for i in range(2000):
+        best_pop = compare(image,population)
+        for j in best_pop:
+            # j.print_picture()
+            print(j.get_fitness(), " ====== ", (height*width)/2)
+            if(j.get_fitness() > (height*width)/2):
+                break
+
+        population = generate_new_population(mutation_rate - 0.01, best_pop,50,image)
+
+        
+
+main()

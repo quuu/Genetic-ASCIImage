@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/5953373/how-to-split-image-into-multiple-pieces-in-python#7051075

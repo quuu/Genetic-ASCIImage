@@ -1,27 +1,60 @@
 #!/usr/bin/env python3
+from breader import compute_fitness
+
 
 class Picture:
     """
     ASCII picture representation object
     """
-    # takes in a 1d array and the amount of chars per row
-    # like a 2d array represented in 1d space
-    def __init__(self, rep, chars_per_row):
+    def __init__(self, rep, height, width, target=None):
         self.rep = rep
-        self.chars_per_row = chars_per_row
+        self.width = width
+        self.height = height
+        if target is not None:
+            if target.get_width() != width or target.get_height() != height:
+                print("sizes are not the same")
+            else:
+                self.fitness = compute_fitness(target, rep)
 
-    # member function to print the picture
     def print_picture(self):
-        count =0
-        for i in self.rep:
-            if count==self.chars_per_row:
-                print("\n")
-                count=0
-            print(i, end='')
-            count+=1
-        print()
+        '''
+
+        :return:
+        '''
+        print(self.rep)
 
     def get_rep(self):
+        '''
+
+        :return:
+        '''
         return self.rep
 
+    def get_width(self):
+        '''
 
+        :return:
+        '''
+        return self.width
+
+    def get_height(self):
+        '''
+
+        :return:
+        '''
+        return self.height
+
+    def get_fitness(self):
+        '''
+
+        :return:
+        '''
+        return self.fitness
+
+    def mutated(self,rep):
+        '''
+
+        :param rep:
+        :return:
+        '''
+        self.rep = rep
